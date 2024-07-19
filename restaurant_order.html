@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Заказы</title>
+    <link rel="icon" type="image/x-icon" href="icon-internet.ico">
+    <link rel="stylesheet" href="stylerestaurant.css">
+</head>
+<body>
+    <div class="container">
+        <div class="choice">
+            <label for="orderType" class="label">Тип заказа:</label>
+            <input type="radio" id="livrare" name="orderType" value="livrare" onchange="updateOrderType()">
+            <input type="radio" id="restraurant" name="orderType" value="restraurant" onchange="updateOrderType()">
+            <div class="category">
+                <label for="livrare">
+                    <span class="dot one"></span>
+                    <span>Доставка</span>
+                </label>
+                <label for="restraurant">
+                    <span class="dot two"></span>
+                    <span>Заказ в ресторане</span>
+                </label>
+            </div>
+        </div>
+        <div class="product">
+            <img src="pizza.jpg" title="Mario" style="width: 270px; height: 170px;">
+            <div class="text">
+                <span>Mario</span>
+                <p>Тесто для пиццы, томатный соус, базилик, оливковое масло, майонез, сыр Моцарелла, куриное мясо, сыр Дор Блю, шпинат, колбаски Кабанос, пончики</p>
+            </div>
+            <div class="quantity">
+                <span>Количество</span>
+                <div class="counters">
+                    <button onclick="decreaseQuantity()" class="count-button">-</button>
+                    <span id="quantity">1</span>
+                    <button onclick="increaseQuantity()" class="count-button">+</button>
+                </div>
+            </div>
+            <div class="price">
+                <span style="margin-bottom: 10px;">Цена</span>
+                <span style="color: darkblue;">75 MDL</span>
+            </div>
+            <div class="total">
+                <span style="margin-bottom: 10px;">Итого</span>
+                <span id="totalPrice" style="color: darkblue;">75 MDL</span>
+            </div>
+        </div>
+        <hr color="silver">
+        <div class="totals">
+            <div>
+                <span class="span-totals">Промежуточный итог:</span>
+                <span id="subtotal" style="margin-left: 60px;">75 MDL</span>
+            </div>
+            <div>
+                <span class="span-totals">Доставка:</span>
+                <span id="delivery" style="position: relative; float: right;"></span>
+            </div>
+            <div>
+                <span class="span-totals" style="font-weight: bold; color: darkblue;">Итого:</span>
+                <span id="total" style="position: relative; float: right;">75 MDL</span>
+            </div>
+        </div>
+    </div>
+    <script>
+        let quantity = 1, pricePerItem = 75, delivery = 0;
+
+        function increaseQuantity() {
+            if (updateOrderType() === false) return;
+            quantity++;
+            updateOrderTotals();
+        }
+
+        function decreaseQuantity() {
+            if (quantity > 1) {
+                if (updateOrderType() === false) return;
+                quantity--;
+                updateOrderTotals();
+            }
+        }
+
+        function updateOrderType() {
+            let order = document.querySelector('input[name="orderType"]:checked');
+            if (!order) {
+                alert("Пожалуйста, выберите тип заказа!");
+                return false;
+            }
+            let orderType = order.value;
+
+            if (orderType === "livrare") delivery = 25;
+            else delivery = 0;
+
+            document.getElementById('delivery').textContent = delivery + ' MDL';
+            return true;
+            updateOrderTotals();
+        }
+
+        function updateOrderTotals() {
+            document.getElementById('quantity').textContent = quantity;
+            totalPrice.textContent = quantity * pricePerItem + ' MDL';
+            subtotal.textContent = quantity * pricePerItem + ' MDL';
+            total.textContent = quantity * pricePerItem + delivery + ' MDL';
+        }
+    </script>
+</body>
+</html>

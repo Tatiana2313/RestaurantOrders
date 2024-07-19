@@ -1,0 +1,136 @@
+body {
+    background-color: azure;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.container {
+    position: relative;
+    left: 10%;
+    margin-top: 40px;
+    width: 1200px;
+    padding: 30px;
+}
+
+.choice {
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    margin-bottom: 20px;
+    align-items: center;
+    margin-left: 290px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 16px;
+}
+
+.category {
+    display: flex;
+    margin: 14px 0px;
+}
+
+.category label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+.category label .dot {
+   height: 15px;
+   width: 15px;
+   border-radius: 50%;
+   margin-right: 10px;
+   background: #d9d9d9;
+   border: 5px solid transparent;
+   transition: all 0.3s ease;
+}
+
+#livrare:checked ~ .category label .one,
+#restraurant:checked ~ .category label .two {
+    background: #506fd6;
+    border-color: #d9d9d9;
+}
+
+.choice input[type="radio"] {
+    display: none;
+}
+
+.product {
+    display: flex;
+    margin: 14px 10px;
+}
+
+.text {
+    margin-left: 20px;
+    width: 290px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 16px;
+}
+
+.text > span {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.label {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.quantity {
+    margin-top: 20px;
+    margin-left: 170px;
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+}
+
+.counters {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+    width: 90px;
+}
+
+.count-button {
+    width: 27px;
+    height: 29px;
+    background-color: #ece2d7;
+    border: 1px solid #ece2d7;
+    border-radius: 5px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.price {
+    margin-top: 20px;
+    margin-left: 60px;
+    display: flex;
+    flex-direction: column;
+    width: 100px;
+}
+
+.total {
+    margin-top: 20px;
+    margin-left: 60px;
+    display: flex;
+    flex-direction: column;
+    width: 100px;
+}
+
+.totals {
+    position: relative;
+    float: right;
+    display: flex;
+    flex-direction: column;
+    margin-top: 60px;
+}
+
+.totals > div {
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+.span-totals {
+    margin-left: -20px;
+}
